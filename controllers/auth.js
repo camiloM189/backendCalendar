@@ -53,7 +53,7 @@ const loginUsuario = async(req,res = response) => {
     const {email,password} = req.body
 
     try {
-        const usuario = await Usuario.findOne({email})
+        const usuario = await mongoose.model('Usuario').findOne({email})
         if(!usuario){
             return res.status(400).json({
                 ok:false,
