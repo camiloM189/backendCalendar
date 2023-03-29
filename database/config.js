@@ -5,12 +5,7 @@ const dbConnection = async() => {
     
     try {
 
-        await mongoose.connect(process.env.DB_CNN, {
-            socketOptions: {
-                socketTimeoutMS: 0,
-                connectionTimeout: 30000,
-              }
-        });
+        await mongoose.connect(process.env.DB_CNN, {});
         console.log('DB online');
 
         

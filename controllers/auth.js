@@ -2,14 +2,16 @@ const {response} = require('express');
 const bcrypt = require('bcryptjs');
 const Usuario = require('../model/Usuario');
 const {generarJWT} = require('../helpers/jwt');
+const { default: mongoose } = require('mongoose');
 
 
 
 const crearUsuario = async(req,res = response) => {
     const {email,password} = req.body
     try {
+        
 
-        let usuario = await Usuario.findOne({email})
+        let usuario = await mongoose.model('Usuario').findOne({email})
         if(usuario){
             return res.status(400).json({
                 ok:false,
@@ -56,8 +58,6 @@ const loginUsuario = async(req,res = response) => {
             return res.status(400).json({
                 ok:false,
                 msg:'El usuario no existe con ese email'
-
-
             })
 
 
