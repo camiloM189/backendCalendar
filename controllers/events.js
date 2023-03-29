@@ -1,5 +1,6 @@
 const {response} = require('express');
 const Eventos  = require('../model/Eventos')
+const { default: mongoose } = require('mongoose');
 
 
 
