@@ -5,7 +5,7 @@ const { default: mongoose } = require('mongoose');
 
 
 const getEventos = async(req,res = response) => {
-    const eventos = await mongoose.model('Eventos').find()
+    const eventos = await mongoose.model('Evento').find()
                     .populate('user','name')
                             
     res.json({
@@ -54,7 +54,7 @@ const actualizarEventos = async(req,res = response) => {
     const eventoId = req.params.id;
     
     try {
-        const evento = await mongoose.model('Eventos').findById(eventoId);
+        const evento = await mongoose.model('Evento').findById(eventoId);
         const uid = req.uid
 
         if(!evento){
@@ -101,7 +101,7 @@ const deleteElement = async(req,res = response) => {
     const eventoId = req.params.id;
 
     try {
-        const evento = await mongoose.model('Eventos').findById(eventoId);
+        const evento = await mongoose.model('Evento').findById(eventoId);
         const uid = req.uid
 
         if(!evento){
@@ -119,7 +119,7 @@ const deleteElement = async(req,res = response) => {
 
        
 
-      const BorrarEvento = await mongoose.model('Eventos').findByIdAndDelete(eventoId);
+      const BorrarEvento = await mongoose.model('Evento').findByIdAndDelete(eventoId);
 
       res.json({
         ok:true,
